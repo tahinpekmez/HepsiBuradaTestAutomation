@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c98fa617-eb85-4bee-8546-c8d7e661ca48" name="Default Changelist" comment="" />
+    <list default="true" id="c98fa617-eb85-4bee-8546-c8d7e661ca48" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/AutomationReport.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/AutomationReport.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hepsiburada.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hepsiburada.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/BasePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/BaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/CaseMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/CaseMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/ExtentReportUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/ExtentReportUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/test.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +31,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1qAgrrA6lYK7aHRhswAzVQI6sgd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,11 +44,12 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RunManager" selected="TestNG.test.SearchProductAndDetail">
     <configuration default="true" type="TestNG">
@@ -112,5 +129,16 @@
       <updated>1616528010948</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package hepsiburadatest;
+package HepsiburadaBase;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;

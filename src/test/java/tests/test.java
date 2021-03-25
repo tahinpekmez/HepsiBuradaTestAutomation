@@ -1,7 +1,7 @@
 package tests;
 
-import hepsiburadatest.BaseTest;
-import hepsiburadatest.CaseMethods;
+import HepsiburadaBase.BaseTest;
+import HepsiburadaBase.CaseMethods;
 import org.testng.annotations.Test;
 
 public class test extends BaseTest {
