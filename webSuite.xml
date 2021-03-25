@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Web Suite" configfailurepolicy="continue" parallel="tests" thread-count="1">
+
+    <test name="QATestCase">
+        <classes>
+            <class name="tests.test">
+                <methods>
+
+                    <include name="Login"/>
+                    <include name="SearchProductAndDetail"/>
+
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
