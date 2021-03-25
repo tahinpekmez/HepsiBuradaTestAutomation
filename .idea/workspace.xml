@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c98fa617-eb85-4bee-8546-c8d7e661ca48" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+    <list default="true" id="c98fa617-eb85-4bee-8546-c8d7e661ca48" name="Default Changelist" comment="&quot;Hepsiburada&quot; test automation with maven-selenium-testng-java">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_8_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_0_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reports/AutomationReport.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/AutomationReport.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hepsiburada.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hepsiburada.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/BaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/CaseMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/CaseMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hepsiburadatest/ExtentReportUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/ExtentReportUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +123,14 @@
       <option name="presentableId" value="Default" />
       <updated>1616528010948</updated>
     </task>
+    <task id="LOCAL-00001" summary="&quot;Hepsiburada&quot; test automation with maven-selenium-testng-java">
+      <created>1616661224980</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616661224980</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,5 +143,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;Hepsiburada&quot; test automation with maven-selenium-testng-java" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Hepsiburada&quot; test automation with maven-selenium-testng-java" />
   </component>
 </project>
