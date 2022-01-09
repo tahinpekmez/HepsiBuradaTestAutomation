@@ -39,6 +39,12 @@ public class CaseMethods extends BasePage{
         switchToTab(1);
         scrollToElementByID("productReviewsTab");
         clickElementById("productReviewsTab");
+        System.out.println(findElementById("productReviewsTab").getText());
+        if(findElementById("productReviewsTab").getText() == "Değerlendirmeler (0)"){
+            driver.get(configuration.getProperty("mainPage"));
+            waitForLoad(driver);
+            Assert.assertEquals(driver.getCurrentUrl(), configuration.getProperty("mainPage"));
+        }
         clickElementByXpath("//div[@class='paginationOverlay']/div/div[1]//*[@class='hermes-ReviewCard-module-tAGUS']");
         String stringThanks = driver.findElement(By.xpath("//div[@class='paginationOverlay']/div/div[1]//*[@class='hermes-ReviewCard-module-1ZiTv']")).getText();
         System.out.println(stringThanks);

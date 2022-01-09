@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c98fa617-eb85-4bee-8546-c8d7e661ca48" name="Default Changelist" comment="&quot;Hepsiburada&quot; test automation with maven-selenium-testng-java" />
+    <list default="true" id="c98fa617-eb85-4bee-8546-c8d7e661ca48" name="Default Changelist" comment="&quot;Hepsiburada&quot; test automation with maven-selenium-testng-java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/AutomationReport.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/AutomationReport.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/CaseMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HepsiburadaBase/CaseMethods.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641747252794</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&quot;Hepsiburada&quot; test automation with maven-selenium-testng-java">
+      <created>1641747341704</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641747341704</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
