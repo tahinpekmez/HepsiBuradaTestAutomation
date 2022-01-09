@@ -1,63 +1,48 @@
 package HepsiburadaBase;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-public class CaseMethods extends BasePage{
+import java.util.List;
 
-    Constants constants = new Constants();
+public class CaseMethods extends BasePage{
 
     public CaseMethods(WebDriver driver){
         super(driver);
     }
 
-    public void loginAndQuit() {
-
-        driver.get(constants.getMainPage());
-        waitPageLoad();
-        if (driver.getCurrentUrl().equals("https://www.hepsiburada.com/")) {
-            Assert.assertTrue(true);
-        }
-        hoverOnElementByCSS("#myAccount > span > span.sf-OldMyAccount-PhY-T");
-        clickElementById("login");
-        fillInTheBlankById("txtUserName", constants.getMailAddress());
-        fillInTheBlankById("txtPassword", constants.getPassword());
-        clickElementById("btnLogin");
-        waitPageLoad();
-        String myNameAndSurname = driver.findElement(By.xpath("//*[@title='Hesabım']/span[2]")).getText();
-        Assert.assertEquals(myNameAndSurname, "murat ersoy");
-        hoverOnElementByCSS("#myAccount > span > a > span.sf-OldMyAccount-PhY-T");
-        driver.findElement(By.cssSelector("#myAccount > div > div.sf-OldMyAccount-32BWo > ul > li:nth-child(9) > a")).click();
-        waitPageLoad();
-        scrollToElementByCSS("#myAccount > span > span.sf-OldMyAccount-PhY-T");
-    }
 
     public void login() {
 
-        driver.get(constants.getMainPage());
-        waitPageLoad();
-        if (driver.getCurrentUrl().equals("https://www.hepsiburada.com/")) {
-            Assert.assertTrue(true);
-        }
+        driver.get(configuration.getProperty("mainPage"));
+        waitForLoad(driver);
+        Assert.assertEquals(driver.getCurrentUrl(), configuration.getProperty("mainPage"));
         hoverOnElementByCSS("#myAccount > span > span.sf-OldMyAccount-PhY-T");
         clickElementById("login");
-        fillInTheBlankById("txtUserName", constants.getMailAddress());
-        fillInTheBlankById("txtPassword", constants.getPassword());
+        fillInTheBlankById("txtUserName", configuration.getProperty("userMail"));
         clickElementById("btnLogin");
-
-        String myNameAndSurname = driver.findElement(By.xpath("//*[@title='Hesabım']/span[2]")).getText();
-        Assert.assertEquals(myNameAndSurname, "murat ersoy");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtPassword")));
+        fillInTheBlankById("txtPassword", configuration.getProperty("password"));
+        clickElementById("btnEmailSelect");
+        String userName = findElementByXpath("//*[@title='Hesabım']/span[2]").getText();
+        Assert.assertEquals(userName, "Fatih Burak Pehlivan");
     }
 
     public void searchProductAndCommentDetail(){
         fillInTheBlankByXpath("//*[@class='desktopOldAutosuggestTheme-input']", "iphone");
         clickElementByXpath("//*[@class='SearchBoxOld-buttonContainer']");
-        clickElementByXpath("//li[2]//div[@class='product-detail']//h3");
+        clickElementByXpath("//*[@data-test-id='product-card-name'][text() = 'iPhone 13 128 GB' ]");
+        switchToTab(1);
+        scrollToElementByID("productReviewsTab");
         clickElementById("productReviewsTab");
         clickElementByXpath("//div[@class='paginationOverlay']/div/div[1]//*[@class='hermes-ReviewCard-module-tAGUS']");
         String stringThanks = driver.findElement(By.xpath("//div[@class='paginationOverlay']/div/div[1]//*[@class='hermes-ReviewCard-module-1ZiTv']")).getText();
         System.out.println(stringThanks);
         Assert.assertEquals(stringThanks, "Teşekkür Ederiz.");
     }
+
 }

@@ -9,24 +9,45 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+
 
 public class BasePage {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
+    Actions actions;
+    Configuration configuration;
 
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 20);
+        this.wait = new WebDriverWait(driver, 10);
+        this.actions = new Actions(driver);
+        this.configuration = new Configuration();
 
     }
 
 
+    public WebElement findElementByXpath(String xpath) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+        return driver.findElement(By.xpath(xpath));
+    }
+
+    public WebElement findElementByCSS(String css) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(css)));
+        return driver.findElement(By.cssSelector(css));
+    }
+
+    public WebElement findElementById(String id) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
+        return driver.findElement(By.id(id));
+    }
+
     public void clickElementByXpath(String xpath) {
         waitUntilJSReady();
         waitClickableWebElementByXpath(xpath);
-        scrollToElementByXpath(xpath);
+        highlightElement(findElementByXpath(xpath));
         driver.findElement(By.xpath(xpath)).click();
 
     }
@@ -35,7 +56,7 @@ public class BasePage {
     public void clickElementById(String id) {
         waitUntilJSReady();
         waitClickableWebElementById(id);
-        scrollToElementByID(id);
+        highlightElement(findElementById(id));
         driver.findElement(By.id(id)).click();
     }
 
@@ -52,25 +73,43 @@ public class BasePage {
     }
 
 
+    protected void highlightElement(WebElement element) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element,
+                    "color: red; border: 1px dashed red;");
+        } catch (Exception e) {
+            driver.navigate().refresh();
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element,
+                    "color: red; border: 1px dashed red;");
+        }
+    }
+
+
 
     public void scrollToElementByXpath(String xpath) {
-        WebElement element = driver.findElement(By.xpath(xpath));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", findElementByXpath(xpath) );
+    }
+
+    public void scrollToElement(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
     public void scrollToElementByCSS(String css) {
-        WebElement element = driver.findElement(By.cssSelector(css));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(css)));
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", element);
+        js.executeScript("arguments[0].scrollIntoView();", findElementByCSS(css));
     }
 
     public void scrollToElementByID(String id) {
-        WebElement element = driver.findElement(By.id(id));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", element);
+        js.executeScript("arguments[0].scrollIntoView();", findElementById(id));
     }
-
 
 
     public void waitUntilJSReady() {
@@ -83,34 +122,31 @@ public class BasePage {
 
     // MOVE TO A ELEMENT
     public void hoverOnElementByCSS(String css) {
-        waitPageLoad();
-        WebElement element = driver.findElement(By.cssSelector(css));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).perform();
+        waitForLoad(driver);
+        WebElement webElement = findElementByCSS(css);
+        actions.moveToElement(webElement).build().perform();
     }
 
 
     // WAIT METHODS
-    public void waitDOM() {
-        wait.until(webDriver ->
-                ((JavascriptExecutor) webDriver)
-                        .executeScript("return document.readyState").equals("complete"));
-    }
-
-
-    public void waitPageLoad() {
-        waitDOM();
+    public void waitForLoad(WebDriver driver) {
+        ExpectedCondition<Boolean> pageLoadCondition = driver1 -> ((JavascriptExecutor) driver1).executeScript("return document.readyState").equals("complete");
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(pageLoadCondition);
     }
 
 
     public void waitClickableWebElementByXpath(String xpath) {
-        WebElement element = driver.findElement(By.xpath(xpath));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
     }
 
     public void waitClickableWebElementById(String id) {
-        WebElement element = driver.findElement(By.id(id));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(id)));
+    }
+
+
+    public void waitClickableWebElementByCSS(String css) {
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(css)));
     }
 
     public void sleep(int sec) {
@@ -121,6 +157,72 @@ public class BasePage {
         }
     }
 
+    public void waitForNewWindow(WebDriver driver, int timeout) {
+        try {
+            boolean flag = false;
+            int counter = 0;
 
+            while (!flag) {
+
+                try {
+                    ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+
+                    if (tabs.size() > 1) {
+                        return;
+                    }
+
+                    sleep(1);
+
+                    counter++;
+                    if (counter > timeout) {
+                        return;
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    return;
+                }
+            }
+        } catch (Exception e) {
+            driver.navigate().refresh();
+
+            boolean flag = false;
+            int counter = 0;
+
+            while (!flag) {
+
+                try {
+                    ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+                    if (tabs.size() > 1) {
+                        flag = true;
+                        return;
+                    }
+                    sleep(1);
+                    counter++;
+                    if (counter > timeout) {
+                        return;
+                    }
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    return;
+                }
+            }
+        }
+    }
+
+    protected void switchToTab(int index) {
+        try {
+            waitForNewWindow(driver, 10);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(0)).close();
+            driver.switchTo().window(tabs.get(index));
+        } catch (Exception e) {
+            driver.navigate().refresh();
+            waitForNewWindow(driver, 10);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(0)).close();
+            driver.switchTo().window(tabs.get(index));
+        }
+
+    }
 
 }

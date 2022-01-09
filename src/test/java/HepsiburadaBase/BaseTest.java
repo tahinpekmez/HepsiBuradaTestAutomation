@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
@@ -22,11 +24,18 @@ public class BaseTest {
     static ExtentReports extent;
     ExtentHtmlReporter reporter;
     ExtentTest logger;
-    CaseMethods caseMethods;
 
 
     @BeforeSuite
     public void beforeSuite() {
+
+        File folder = new File("./Reports");
+        for (File file : folder.listFiles()) {
+            if (file.getName().endsWith(".png")) {
+                file.delete();
+            }
+        }
+
         extent = new ExtentReports();
         reporter = new ExtentHtmlReporter("./Reports/AutomationReport.html");
         extent.attachReporter(reporter);
@@ -59,8 +68,7 @@ public class BaseTest {
             String encodeString = ExtentReportUtilities.encodeFileToBase64Binary(ExtentReportUtilities.getScreenshot(driver));
             logger.fail(result.getThrowable().getMessage(), MediaEntityBuilder.createScreenCaptureFromBase64String(encodeString).build());
             driver.manage().deleteAllCookies();
-            caseMethods = new CaseMethods(driver);
-            caseMethods.login();
+            driver.quit();
         }
 
 
@@ -111,6 +119,7 @@ public class BaseTest {
         chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("disable-features=NetworkService");
         chromeOptions.addArguments("enable-features=NetworkServiceInProcess");
+//        chromeOptions.addArguments("user-agent=Mozilla/5.0 (WghrXkuMnF) AppleWebKit/5.0 Chrome/8.0 Safari/5.0");
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         chromeOptions.setProxy(null);
         return chromeOptions;

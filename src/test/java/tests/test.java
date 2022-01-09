@@ -11,7 +11,7 @@ public class test extends BaseTest {
     @Test(priority = -1)
     public void Login() {
         caseMethods = new CaseMethods(driver);
-        caseMethods.loginAndQuit();
+        caseMethods.login();
 
     }
 

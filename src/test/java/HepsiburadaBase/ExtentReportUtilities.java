@@ -15,7 +15,7 @@ public class ExtentReportUtilities {
     public static File getScreenshot(WebDriver driver)
     {
         TakesScreenshot ts=(TakesScreenshot) driver;
-        File src=ts.getScreenshotAs(OutputType.FILE);
+        File src = ts.getScreenshotAs(OutputType.FILE);
         String path=System.getProperty("user.dir")+"/Reports/"+System.currentTimeMillis()+".png";
         File destination=new File(path);
         try
